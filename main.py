@@ -20,6 +20,11 @@ def main() -> None:
 
     print(f"Loaded {len(df)} rows, {df.shape[1]} columns from {DATA_PATH.name}")
     print(df.head(), end="\n\n")
+    print("Columns:", list(df.columns), end="\n\n")
+    df.info()
+    print()
+    print("Average age:", df["age"].mean())
+    print()
     print("G3 (final grade):")
     print(df["G3"].describe().to_string(), end="\n\n")
 
@@ -34,6 +39,33 @@ def main() -> None:
     fig.savefig(out_path, dpi=120)
     plt.close(fig)
     print(f"Saved {out_path}")
+
+    avg_age_by_sex = df.groupby("sex")["age"].mean()
+    fig2, ax2 = plt.subplots(figsize=(6, 4))
+    avg_age_by_sex.plot(kind="bar", ax=ax2, color=["steelblue", "coral"], edgecolor="white")
+    ax2.set_title("Average Age by Gender")
+    ax2.set_xlabel("Gender")
+    ax2.set_ylabel("Average Age")
+    fig2.tight_layout()
+    out_path2 = OUTPUT_DIR / "avg_age_by_sex.png"
+    fig2.savefig(out_path2, dpi=120)
+    plt.close(fig2)
+    print(f"Saved {out_path2}")
+
+    g3_by_sex = df.groupby("sex")["G3"].mean()
+    print("\nAverage final grade by gender:")
+    print(g3_by_sex.to_string(), end="\n\n")
+
+    fig3, ax3 = plt.subplots(figsize=(6, 4))
+    g3_by_sex.plot(kind="bar", ax=ax3, color=["steelblue", "coral"], edgecolor="white")
+    ax3.set_title("Average final grade (G3) by gender")
+    ax3.set_xlabel("Gender")
+    ax3.set_ylabel("Mean G3")
+    fig3.tight_layout()
+    out_path3 = OUTPUT_DIR / "g3_by_sex.png"
+    fig3.savefig(out_path3, dpi=120)
+    plt.close(fig3)
+    print(f"Saved {out_path3}")
 
 
 if __name__ == "__main__":
