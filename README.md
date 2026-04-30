@@ -1,16 +1,6 @@
-# Student performance — simple analysis
+# Student performance
 
 Small Python script using **pandas** and **matplotlib** (good for beginners).
-
-## How to run
-
-1. Install Python 3 (if you do not have it).
-2. Open a terminal in this project folder and run:
-
-```bash
-pip install -r requirements.txt
-python main.py
-```
 
 3. The `output/` folder is created automatically. You should get:
 
@@ -25,4 +15,4 @@ python main.py
 
 ## Data
 
-Uses `student_data.csv` (student performance dataset, e.g. from Kaggle).
+Uses `student_data.csv` (student performance dataset)
