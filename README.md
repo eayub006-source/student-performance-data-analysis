@@ -1,6 +1,6 @@
 # Student performance
 
-Small Python script using **pandas** and **matplotlib** (good for beginners).
+Small Python script using **pandas** and **matplotlib**.
 
 3. The `output/` folder is created automatically. You should get:
 
